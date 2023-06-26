@@ -4,7 +4,7 @@ WORKDIR /app
 
 # 이렇게 하면 package-lock.json이 안오므로...
 # COPY ./package.json /app
-COPY package*.json /app
+COPY package*.json .
 
 # npm ci  installs exactly what is listed in package-lock.json
 RUN npm ci 
