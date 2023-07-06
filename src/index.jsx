@@ -5,6 +5,8 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+            <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
+
     <App />
   </React.StrictMode>,
 )
