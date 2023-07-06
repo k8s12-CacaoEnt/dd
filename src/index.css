@@ -9,7 +9,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: gray;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,9 +20,14 @@
 
 
 body {
-  width: 100%;
-  margin: 0
-}
+  /* width: 100%; */
+
+  /*margin 0이면 페이지 양옆에 여백없삼
+  조금 빡빡해보여서 지워봄
+  margin :0 
+  */
+  
+  }
 /* 
 
 
