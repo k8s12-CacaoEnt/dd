@@ -28,7 +28,7 @@ export async function action({request}){
   
   const response = await fetch('http://admin.profilehub.info/v1/auth/member/login',{
     method: 'POST',
-    hearders: {
+    headers: {
       'Content-Type': 'applicaiton/json', 
     },
     body: JSON.stringify(authData)
