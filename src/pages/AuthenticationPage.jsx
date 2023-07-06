@@ -20,8 +20,8 @@ export async function action({request}){
   //  form에서 submit했을때 request로 해당 데이터 가져오기 
   const data = await request.formData();
   const authData = {
-    email: data.get('email'),
-    password: data.get('password')
+    memberEmail: data.get('email'),
+    memberPassword: data.get('password')
   };
 
   console.log(authData);
