@@ -7,7 +7,7 @@ env:
   AWS_REGION: ap-northeast-2
   AWS_ECR_REGISTRY: 204770130849.dkr.ecr.ap-northeast-2.amazonaws.com
   AWS_ECR_REPOSITORY: profile-box-front
-  IMG_TAG: latest
+  IMG_TAG: ${{ github.sha }}
   
 jobs:
   build:
