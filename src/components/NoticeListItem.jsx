@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Button } from "@mui/material";
 import {Typography, Divider} from "@mui/material";
-import noticeList from "../../api/notice";
+import noticeList from "../api/notice";
 let a = {
     "notice_id": 1,
     "notice_title": "NOW HIRING: TikTok LiveNOW HIRING: TikTok Live Streaming Hosts! Streaming Hosts!",

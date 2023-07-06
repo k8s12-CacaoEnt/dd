@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import NoticeListItem from './components/Notice/NoticeListItem';
+import NoticeListItem from './components/NoticeListItem';
 import Image from './main.jpg';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import HomePage from './pages/Home';
