@@ -17,8 +17,8 @@ function AuthenticationPage() {
     try {
       // 로그인 요청
       const loginResponse = await axios.post(
-          // "https://admin.profilehub.info/member/login",
-          "http://localhost:7002/v1/auth/member/login",
+          "https://admin.profilehub.info/v1/auth/member/login",
+          // "http://localhost:7002/v1/auth/member/login",
           {
             memberEmail: email,
             memberPassword: password,
@@ -38,8 +38,8 @@ function AuthenticationPage() {
     try {
       // Admin API 조회 요청
       const noticeResponse = await axios.get(
-          // "https://admin.profilehub.info/v1/notice/admin/noticeId/1"
-          "http://localhost:7002/v1/notice/admin/noticeId/4"
+          "https://admin.profilehub.info/v1/notice/admin/noticeId/1"
+          // "http://localhost:7002/v1/notice/admin/noticeId/4"
       );
 
       // Admin API 응답 데이터를 처리하거나 필요한 작업을 수행할 수 있습니다.
@@ -55,8 +55,8 @@ function AuthenticationPage() {
     try {
       // User API 조회 요청
       const profileResponse = await axios.get(
-          // "https://user.profilehub.info/v1/profile/2"
-          "http://localhost:7001/v1/profile/2"
+          "https://user.profilehub.info/v1/profile/5"
+          // "http://localhost:7001/v1/profile/2"
       );
 
       // User API 응답 데이터를 처리하거나 필요한 작업을 수행할 수 있습니다.
@@ -72,8 +72,8 @@ function AuthenticationPage() {
     try {
       // Admin API 조회 요청
       const noticeResponse = await axios.get(
-          // "https://admin.profilehub.info/v1/notice"
-          "http://localhost:7002/v1/notice"
+          "https://admin.profilehub.info/v1/notice"
+          // "http://localhost:7002/v1/notice"
       );
 
       // Admin API 응답 데이터를 처리하거나 필요한 작업을 수행할 수 있습니다.
@@ -89,8 +89,8 @@ function AuthenticationPage() {
     try {
       // User API 조회 요청
       const profileResponse = await axios.get(
-          // "https://user.profilehub.info/v1/profile"
-          "http://localhost:7001/v1/open/profile"
+          "https://user.profilehub.info/v1/open/profile"
+          // "http://localhost:7001/v1/open/profile"
       );
 
       // User API 응답 데이터를 처리하거나 필요한 작업을 수행할 수 있습니다.
