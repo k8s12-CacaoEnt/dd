@@ -11,7 +11,8 @@ import Image from './main.jpg';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import HomePage from './pages/Home';
 import Root  from './pages/Root';
-import AuthenticationPage,  {action as authAction}  from './pages/AuthenticationPage';
+// import AuthenticationPage,  {action as authAction}  from './pages/AuthenticationPage';
+import AuthenticationPage  from './pages/AuthenticationPage';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import SignupPage from './pages/Signup';
 import LoginPage from './pages/Login';
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       {
         path: 'auth',
         element: <AuthenticationPage />,
-        action: authAction        
+        // action: authAction
       },
       {
         path: 'login',
