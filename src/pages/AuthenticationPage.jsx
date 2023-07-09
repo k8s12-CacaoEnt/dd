@@ -60,7 +60,7 @@ function AuthenticationPage() {
     try {
       // User API 조회 요청
       const profileResponse = await axios.get(
-          "https://user.profilehub.info/v1/profile/5",
+          "https://user.profilehub.info/v1/profile/8",
           // "http://localhost:7001/v1/profile/2"
           {
             withCredentials: true, // 쿠키 전송을 위해 withCredentials 설정
