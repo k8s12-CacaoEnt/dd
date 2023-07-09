@@ -22,6 +22,9 @@ function AuthenticationPage() {
           {
             memberEmail: email,
             memberPassword: password,
+          },
+          {
+            withCredentials: true,
           }
       );
 
