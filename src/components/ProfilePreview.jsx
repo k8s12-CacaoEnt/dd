@@ -23,7 +23,8 @@ border-top-right-radius: 10px;
 -o-object-fit: cover;
 object-fit: cover;
 height: 238px;
-width: 238px;
+width: 170px;
+//width: 238px;
 `;
 
 const Wrapper = styled.div`
@@ -32,7 +33,8 @@ border-style: solid;
 border-color: var(--color-gray-border);
 border-radius: 10px;
 padding: 0;
-width: 240px;
+width: 170px;
+//width: 240px;
 text-align: left;
 margin-bottom: 30px;
 position: relative;
