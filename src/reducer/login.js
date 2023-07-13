@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLogin: false,
-                userInfo: null
+                userInfo: {}
             };
         }
         default:
