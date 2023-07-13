@@ -48,7 +48,6 @@ const router = createBrowserRouter([
 
 
 function App() {
-  const { isLogin, user } = useSelector((state) => state);
   const isLoginDispatch = useDispatch();
 
   useEffect(() => {
