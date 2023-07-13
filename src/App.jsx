@@ -16,6 +16,9 @@ import AuthenticationPage  from './pages/AuthenticationPage';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import SignupPage from './pages/Signup';
 import LoginPage from './pages/Login';
+import { useEffect } from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import { getTokenToSessionStorage, getMemberInfoToSessionStorage } from './comm/common.js';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +48,19 @@ const router = createBrowserRouter([
 
 
 function App() {
+  const { isLogin, user } = useSelector((state) => state);
+  const isLoginDispatch = useDispatch();
+
+  useEffect(() => {
+    const token = getTokenToSessionStorage();
+    if (token) {
+      const memberInfo = getMemberInfoToSessionStorage();
+      isLoginDispatch({type: 'isLogin', token: token, data: memberInfo});
+    }else{
+      isLoginDispatch({type: 'isNonLogin'});
+    }
+  }, []);
+
   return <RouterProvider router={router} />;
 }
 

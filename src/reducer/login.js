@@ -1,0 +1,31 @@
+import {loginComplete, logoutComplete} from './../comm/common.js'
+
+export const initialState = {
+    isLogin: false,
+    userInfo: {}
+};
+
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
+        case 'isLogin': {
+            loginComplete(action.token, action.data);
+            return {
+                ...state,
+                isLogin: true,
+                userInfo: action.data
+            };
+        }
+        case 'isNonLogin': {
+            logoutComplete()
+            return {
+                ...state,
+                isLogin: false,
+                userInfo: null
+            };
+        }
+        default:
+            return state;
+    }
+};
+
+export default reducer;
