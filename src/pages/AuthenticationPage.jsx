@@ -41,11 +41,11 @@ function AuthenticationPage() {
         console.log(userInfo);
     }, [isLogin, userInfo]);
 
-    function successLogin(data) {
+    const successLogin = (data) => {
         isLoginDispatch({type: 'isLogin', data: data.memberInfo, token: data.jwtToken});
     }
 
-    function failLogin() {
+    const failLogin = () => {
         isLoginDispatch({type: 'isNonLogin'});
     }
 
@@ -65,7 +65,6 @@ function AuthenticationPage() {
             );
             console.log("Login Response:", loginResponse.data);
             successLogin(loginResponse.data.data);
-            // loginComplete(loginResponse.data.data);
         } catch (e) {
             console.log("Login Response:", e.response.data);
             failLogin();
@@ -93,7 +92,7 @@ function AuthenticationPage() {
         try {
             // User API 조회 요청
             const profileResponse = await axios.get(
-                "https://user.profilehub.info/v1/profile/8",
+                "https://user.profilehub.info/v1/profile/profileId/8",
                 // "http://localhost:7001/v1/profile/2",
                 {
                     withCredentials: true, // 쿠키 전송을 위해 withCredentials 설정
@@ -128,32 +127,6 @@ function AuthenticationPage() {
             console.log("ProfileList Response:", profileResponse.data);
         } catch (e) {
             console.log("ProfileList Response:", e.response.data);
-        }
-    };
-
-    const handleSaveCache = async () => {
-        try {
-            const noticeResponse = await axios.get(
-                "https://admin.profilehub.info/v1/notice"
-                // "http://localhost:7001/v1/open/save/cache"
-            );
-
-            console.log("SaveCache Response:", noticeResponse.data);
-        } catch (e) {
-            console.log("SaveCache Response:", e.response.data);
-        }
-    };
-
-    const handleGetCache = async () => {
-        try {
-            const noticeResponse = await axios.get(
-                "https://admin.profilehub.info/v1/notice"
-                // "http://localhost:7001/v1/open/get/cache"
-            );
-
-            console.log("GetCache Response:", noticeResponse.data);
-        } catch (e) {
-            console.log("GetCache Response:", e.response.data);
         }
     };
 
@@ -200,12 +173,6 @@ function AuthenticationPage() {
                 <label style={{display: "block"}}>Non Required Cookie</label>
                 <button onClick={handleGetNoticeList}>Get NoticeList</button>
                 <button onClick={handleGetProfileList}>Get ProfileList</button>
-            </div>
-
-            <div className={classes.form}>
-                <label style={{display: "block"}}>Redis Cache Test</label>
-                <button onClick={handleSaveCache}>save cache</button>
-                <button onClick={handleGetCache}>get cache</button>
             </div>
 
         </>
