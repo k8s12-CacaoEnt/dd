@@ -19,13 +19,25 @@ import LoginPage from './pages/Login';
 import { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { getTokenToSessionStorage, getMemberInfoToSessionStorage } from './comm/common.js';
+import ProfileList from './components/ProfileList';
+import { Home } from '@mui/icons-material';
+
+
 
 const router = createBrowserRouter([
   {
     path: '/',
+    // 아래 children 컴포넌츠의 wrapper 
+    // 메인 네비게이션 바 같은게 들어갈 수 있음
     element: <Root />,
     children: [
+      // 메인페이지에 뜰것
       { index: true, element: <HomePage /> },
+      {
+        path: 'actorProfile',
+        element: <ProfileList />,
+        // action: actionProfileList,
+      },
       {
         path: 'auth',
         element: <AuthenticationPage />,
@@ -44,6 +56,10 @@ const router = createBrowserRouter([
 
     ],
   },
+
+  {
+    path:'/actorProfile'
+  }
 ]);
 
 

@@ -11,11 +11,11 @@ const store = createStore(loginReducer);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
-        <React.StrictMode>
+        {/* <React.StrictMode> */}
             <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
 
             <App />
-        </React.StrictMode>,
+        {/* </React.StrictMode>, */}
     </Provider>
 );
 
