@@ -11,6 +11,14 @@ display: flex;
 
 `;
 
+const PaginationWrapper = styled.div`
+  display:flex;
+  justify-content: center;
+width: 100%;
+align-items: center;
+
+`;
+
 const PageButton = styled.button`
   /* Adapt the colors based on primary prop */
   background: ${props => props.$primary ? "#BF4F74" : "white"};
@@ -43,7 +51,7 @@ function Pagination({ total, limit, page, setPage }) {
     const numPages = Math.ceil(total / limit);
   
     return (
-      <>
+      <PaginationWrapper>
         <Nav>
           <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
             &lt;
@@ -63,7 +71,7 @@ function Pagination({ total, limit, page, setPage }) {
             &gt;
           </Button>
         </Nav>
-      </>
+      </PaginationWrapper>
     );
   }
   
