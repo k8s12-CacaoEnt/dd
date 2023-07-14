@@ -32,6 +32,7 @@ border-width: 1px;
 border-style: solid;
 border-color: var(--color-gray-border);
 border-radius: 10px;
+border-color: black;
 padding: 0;
 width: 170px;
 //width: 240px;
@@ -49,6 +50,7 @@ line-height: 1.25em;
 padding: 7px 10px 8px;
 border-radius: 10px;
 margin-top:0;
+color:white;
 `;
 
 const ProfileDesc = styled.div`
@@ -62,21 +64,22 @@ overflow-x: hidden;
 const ProfileBtns = styled.div`
 `;
 
-function ProfilePreview(){
+function ProfilePreview({memberName, filePath}){
     return(
         <Wrapper>
             <ImgWrapper>
-             <Img src="https://i.imgur.com/kd0MikB.jpeg"/>
+             <Img src={filePath} />
             </ImgWrapper>
             <ProfileName>
-                <Typography sx={{fontWeight:'bold'}} >kimchi jjigae</Typography>
+            {memberName}
+                {/* <Typography sx={{fontWeight:'bold'}} >{memberName}</Typography> */}
             </ProfileName>
             <ProfileDesc>
-                <ul style={{'list-style-type': 'none'}}>
+                {/* <ul style={{'list-style-type': 'none'}}>
                     <li>서초구, 서울시</li>
                     <li>ddd년</li>
                     <li>어쩌구</li>
-                </ul>
+                </ul> */}
 
             </ProfileDesc>
 

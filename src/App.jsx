@@ -22,6 +22,8 @@ import { getTokenToSessionStorage, getMemberInfoToSessionStorage } from './comm/
 import ProfileList from './components/ProfileList';
 import { Home } from '@mui/icons-material';
 
+
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -32,11 +34,10 @@ const router = createBrowserRouter([
       // 메인페이지에 뜰것
       { index: true, element: <HomePage /> },
       {
-        path: 'profileList',
+        path: 'actorProfile',
         element: <ProfileList />,
         // action: actionProfileList,
       },
-
       {
         path: 'auth',
         element: <AuthenticationPage />,
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
 
     ],
   },
+
+  {
+    path:'/actorProfile'
+  }
 ]);
 
 
