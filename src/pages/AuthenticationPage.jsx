@@ -27,7 +27,7 @@ function AuthenticationPage() {
         notice: '',
         profile: '',
         noticeList: '/v1/notice',
-        profileList: '/v1/open/profile?offset=1&limit=20'
+        profileList: '/v1/open/profiles?offset=1&limit=20'
     }
 
     const [email, setEmail] = useState("heewon@test.com");
@@ -92,7 +92,7 @@ function AuthenticationPage() {
         try {
             // User API 조회 요청
             const profileResponse = await axios.get(
-                "https://user.profilehub.info/v1/profile/profileId/8",
+                "https://user.profilehub.info/v1/profile/8",
                 // "http://localhost:7001/v1/profile/2",
                 {
                     withCredentials: true, // 쿠키 전송을 위해 withCredentials 설정
