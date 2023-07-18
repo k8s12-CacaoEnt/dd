@@ -16,7 +16,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  background: rgba(0,0,0,0.6); /* for better visibility */
+  
   padding: 10px;
   text-align: center;
   z-index: 1;
