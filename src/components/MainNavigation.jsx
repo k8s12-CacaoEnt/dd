@@ -73,7 +73,7 @@ function MainNavigation() {
     </LogoBox>
       <MenuItemBox>
       <MenuItem>
-        <Typography sx={{fontWeight: 'bold'}}> <NavLink to="/profileList">배우 프로필</NavLink> </Typography>
+        <Typography sx={{fontWeight: 'bold'}}> <NavLink to="/actorProfile">배우 프로필</NavLink> </Typography>
       </MenuItem>
       <MenuItem> 
       <Typography sx={{fontWeight: 'bold'}}> 캐스팅 공고 </Typography>
