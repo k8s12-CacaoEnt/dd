@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import ProfilePreview from "./ProfilePreview";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
 import Pagination from "./Pagination"
@@ -66,95 +66,34 @@ const PageButton = styled.button`
 
 
 function ProfileList(props){
-       // 그냥 전체 들어왔다고 가정하고 
-       //  재렌더링마다
        const [profileList, setProfileList] = useState([]);
-
        // 페이지 네이션 수 
-       const perPage = 10; 
-
-       // 현재 선택한 페이지
-       const [page, setPage] = useState(1);
-
-
-       const offset = (page - 1) * perPage;
-
-       let temp = []
-       useEffect(()=>{ 
-             
-              for (let i=0; i<=63; i++){
-                     temp.push({
-                            "status": "SUCCESS",
-                            "message": "프로필 리스트 조회 성공했습니다.",
-                            "data": [
-                                {
-                                    "profileId": `${i}`,
-                                    "title": `타이틀입니다 ㅎㅎ ${i}`,
-                                    "content": `저는 춤을 잘 춥니다 ${i}`,
-                                    "defaultImageId": null,
-                                    "createDt": "2023-07-09T16:25:47.575135",
-                                    "memberInfo": {
-                                        "memberId": 1,
-                                        "memberType": "ADMIN",
-                                        "memberEmail": `heewon${i}@test.com`,
-                                        "memberName": `heewon ${i}`,
-                                        "gender": "FEMALE",
-                                        "telNo": "010-1234-5678",
-                                        "birthDt": "2023-06-28"
-                                    },
-                                    "images": [
-                                        {
-                                            "imageId": 14,
-                                            "fileName": "0118cfaa-c7d8-444f-83ab-9be9da9f4b38.png",
-                                            "filePath": "https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230709/0118cfaa-c7d8-444f-83ab-9be9da9f4b38.png",
-                                            "fileRealName": "image1.png",
-                                            "createDt": "2023-07-09T16:25:50.212635"
-                                        },
-                                        {
-                                            "imageId": 15,
-                                            "fileName": "8d2ef2cd-6dcd-447c-a711-af29c6227fa7.png",
-                                            "filePath": "https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230709/8d2ef2cd-6dcd-447c-a711-af29c6227fa7.png",
-                                            "fileRealName": "image2.png",
-                                            "createDt": "2023-07-09T16:25:50.216568"
-                                        }
-                                    ],
-                                    "videos": [],
-                                    "filmos": [
-                                        {
-                                            "filmoId": 13,
-                                            "filmoType": "DRAMA",
-                                            "filmoName": "필모이름 드라마",
-                                            "filmoYear": "2023",
-                                            "filmoDirector": "필모감독",
-                                            "createDt": "2023-07-09T16:25:50.220694"
-                                        },
-                                        {
-                                            "filmoId": 14,
-                                            "filmoType": "MOVIE",
-                                            "filmoName": "필모이름 영화",
-                                            "filmoYear": "2013",
-                                            "filmoDirector": "필모감독",
-                                            "createDt": "2023-07-09T16:25:50.224330"
-                                        }
-                                    ],
-                                    "links": [
-                                        {
-                                            "linkId": 7,
-                                            "link": "https://www.inflearn.com/courses?s=%EA%B9%80%EC%98%81%ED%95%9C%20api",
-                                            "linkName": "인프런 김영한 검색",
-                                            "createDt": "2023-07-09T16:25:50.228213"
-                                        }
-                                    ]
-                                }
-                            ],
-                            "statusCode": 200
-                        }       )
-              }
-              setProfileList(temp)
+       const perPage = 4; 
+       const [page, setPage] = useState(1); // // 현재 선택한 페이지
+       const [totalPages, setTotalPages] = useState(1); //all page count
        
-              //setPages(Math.trunc(profileList.length/perPage))
-              
-       },[])
+       const handleTest = useCallback(()=>{
+        let tempProfileList = []    
+        axios.get(`https://user.profilehub.info/v1/open/profiles?offset=${page}&limit=${perPage}&sortKey=profileId`
+        ).then(resp=>{
+            let profileListData = resp.data.data;
+            setTotalPages(profileListData.allPageCount);            
+             if (profileListData.profileList.length >0){
+                profileListData.profileList.map((profile)=>{                        
+                    tempProfileList.push(profile)
+                     })
+                 setProfileList(tempProfileList)
+             }
+             
+          })
+
+
+       })
+
+       useEffect(()=>{ 
+        handleTest();
+           },[page])
+    //    },[handleTest])
 
 
  return (<Wrapper>
@@ -162,28 +101,27 @@ function ProfileList(props){
     
     <ProfileWrapper>
        
-       {profileList.slice(offset, offset + perPage).map((profile, idx) => 
+       {profileList.map((profile, idx) => 
        {
-              return <article key={idx}>
-                     <Link to="/actorProfile/{}">
+        return <article key={idx}>
+                    <span>{profile.profileId}</span>
               <ProfilePreview  
-                     filePath={profile.data[0].images[0].filePath}
-                     memberName={profile.data[0].memberInfo.memberName}
-              /></Link>
-            {/* <h3>
-              {profile.data[0].profileId}. {profile.data[0].title}
-            </h3>
-            <p>{profile.data[0].content}</p> */}
+                     filePath={profile.images[0].filePath}
+                     memberName={profile.memberInfo.memberName}
+              />
           </article>
+              
 }
 
 )}
        </ProfileWrapper>
        <Pagination 
-              limit={perPage}
+              
               setPage={setPage}
               page={page}
-              total={profileList.length}
+              
+              totalPages = {totalPages}
+              
        
        />
 
