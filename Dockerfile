@@ -19,5 +19,3 @@ CMD ["npm", "run", "dev"]
 FROM nginx:1.19.0
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=dev /app/dist /usr/share/nginx/html
-
-EXPOSE 8080
