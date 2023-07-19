@@ -30,6 +30,6 @@ spec:
           image: 204770130849.dkr.ecr.ap-northeast-2.amazonaws.com/profile-box-front
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 80
       imagePullSecrets:
         - name: ecr-secret
