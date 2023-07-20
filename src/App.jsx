@@ -20,7 +20,8 @@ import { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { getTokenToSessionStorage, getMemberInfoToSessionStorage } from './comm/common.js';
 import ProfileList from './components/ProfileList';
-import { Home } from '@mui/icons-material';
+import ProfilePage from './components/ProfileDetail';
+
 
 
 
@@ -38,6 +39,12 @@ const router = createBrowserRouter([
         element: <ProfileList />,
         // action: actionProfileList,
       },
+      {
+        path: '/actorProfile/:profileId',
+        element: <ProfilePage />,
+    
+      },
+
       {
         path: 'auth',
         element: <AuthenticationPage />,

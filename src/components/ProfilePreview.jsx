@@ -90,7 +90,7 @@ function ProfilePreview({memberName, filePath, profileId}){
     }, []);
 
         const handleClick = (e) => {
-            // console.log("hi")
+             console.log("hi??")
             navigator(`/actorProfile/${profileId}`)
         };
 
