@@ -1,6 +1,11 @@
 import styled from "@emotion/styled";
 import { Typography } from "@mui/material";
 
+import {useSelector, useDispatch} from 'react-redux';
+import { getTokenToSessionStorage, getMemberInfoToSessionStorage } from '../comm/common.js';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 /*
 https://imgur.com/a/bayU3zD
 https://imgur.com/LmAxmnt
@@ -64,7 +69,31 @@ overflow-x: hidden;
 const ProfileBtns = styled.div`
 `;
 
-function ProfilePreview({memberName, filePath}){
+function ProfilePreview({memberName, filePath, profileId}){
+    const navigator = useNavigate();
+    const isLoginDispatch = useDispatch();
+    const {isLogin, userInfo} = useSelector((state) => state);
+
+    useEffect(() => {
+
+        const token = getTokenToSessionStorage();
+
+        if(token){
+            const memberInfo = getMemberInfoToSessionStorage();
+            isLoginDispatch({type: 'isLogin', token: token, data: memberInfo});
+            // console.log(isLogin)
+            // console.log(memberInfo)
+
+        }
+
+            
+    }, []);
+
+        const handleClick = (e) => {
+            // console.log("hi")
+            navigator(`/actorProfile/${profileId}`)
+        };
+
     return(
         <Wrapper>
             <ImgWrapper>
@@ -73,8 +102,9 @@ function ProfilePreview({memberName, filePath}){
             <ProfileName>
             {memberName}
                 {/* <Typography sx={{fontWeight:'bold'}} >{memberName}</Typography> */}
-            </ProfileName>
+            </ProfileName>                    
             <ProfileDesc>
+            <button onClick={handleClick}>{profileId}</button>
                 {/* <ul style={{'list-style-type': 'none'}}>
                     <li>서초구, 서울시</li>
                     <li>ddd년</li>
