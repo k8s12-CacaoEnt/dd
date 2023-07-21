@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
+
 import Typography from '@mui/material/Typography';
 import styled from '@emotion/styled';
 import LogoSRC from '../assets/profilehub_logo.png';
-import { getTokenToSessionStorage, getMemberInfoToSessionStorage } from '../comm/common.js';
-import { useEffect, useState,usese} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const LogoBox = styled.div`
 @media (max-width: 650px){
@@ -69,7 +69,7 @@ order: 1
 
 function MainNavigation() {
   //로그아웃, 로그인 테스트용
-  const isLogin = true;
+  const isLogin = useSelector(state => state.isLogin);
 
   
   

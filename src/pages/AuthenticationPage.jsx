@@ -2,9 +2,11 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import classes from "../components/AuthForm.module.css";
 import {useSelector, useDispatch} from 'react-redux';
+import { useNavigate } from "react-router-dom";
+
 
 function AuthenticationPage() {
-
+    const navigator = useNavigate();
     let systemType = 'prod';
 
     const prefix = {
@@ -37,6 +39,10 @@ function AuthenticationPage() {
     const isLoginDispatch = useDispatch();
 
     useEffect(() => {
+        if(isLogin){
+            navigator('/');
+        }
+
         console.log(isLogin);
         console.log(userInfo);
     }, [isLogin, userInfo]);
@@ -64,7 +70,7 @@ function AuthenticationPage() {
                 }
             );
             console.log("Login Response:", loginResponse.data);
-            successLogin(loginResponse.data.data);
+            successLogin(loginResponse.data.data);            
         } catch (e) {
             console.log("Login Response:", e.response.data);
             failLogin();
@@ -129,6 +135,7 @@ function AuthenticationPage() {
             console.log("ProfileList Response:", e.response.data);
         }
     };
+
 
     return (
         <>

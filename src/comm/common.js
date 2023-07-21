@@ -4,9 +4,25 @@ import axios from "axios";
 세션스토리지의 JwtToken 반환
  */
 export const getTokenToSessionStorage = () => {
-    const token = sessionStorage.getItem('profilehub_access_token');
+    const token = sessionStorage.getItem('profilehub_access_token',null);
     return token;
 }
+
+/*
+세션스토리지의 JwtToken  삭제
+ */
+export const removeTokenFromSessionStorage = () => {
+    sessionStorage.removeItem('profilehub_access_token',null);
+}
+
+/*
+세션스토리지의 MemberInfo 삭제
+ */
+export const removeMemberInfoFromSessionStorage = () => {
+    sessionStorage.removeItem('profilehub_member_info');
+}
+
+
 
 /*
 세션스토리지의 MemberInfo 반환
