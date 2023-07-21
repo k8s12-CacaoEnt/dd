@@ -24,6 +24,7 @@ import ProfilePage from './components/ProfileDetail';
 import Logout from './components/Logout';
 import NoticeListPage from './components/NoticeListPage';
 import NoticePage from './components/NoticePage';
+import FilmList from './components/FilmsList';
 
 
 
@@ -46,6 +47,12 @@ const router = createBrowserRouter([
         element: <ProfileList />,
         // action: actionProfileList,
       },
+      {
+        path: 'films',
+        element: <FilmList />,
+        // action: actionProfileList,
+      },
+
       {
         path: '/actorProfile/:profileId',
         element: <ProfilePage />,

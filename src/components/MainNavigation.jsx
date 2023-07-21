@@ -82,12 +82,20 @@ function MainNavigation() {
       <MenuItem>  
         <Typography sx={{fontWeight: 'bold'}}> <NavLink to="/actorProfile">배우 프로필</NavLink> </Typography>
       </MenuItem>
+
       <MenuItem> 
         <Typography sx={{fontWeight: 'bold'}}>           
           <NavLink to="/notice">캐스팅 공고 </NavLink>
         </Typography>
       </MenuItem>
+
+      <MenuItem> 
+        <Typography sx={{fontWeight: 'bold'}}>           
+          <NavLink to="/films">작품 검색 </NavLink>
+        </Typography>
+      </MenuItem>
       </MenuItemBox>
+
 
       <LoginItemBox>
       <MenuItem>
