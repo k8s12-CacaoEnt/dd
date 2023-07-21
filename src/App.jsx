@@ -21,6 +21,10 @@ import {useDispatch, useSelector} from 'react-redux';
 import { getTokenToSessionStorage, getMemberInfoToSessionStorage } from './comm/common.js';
 import ProfileList from './components/ProfileList';
 import ProfilePage from './components/ProfileDetail';
+import Logout from './components/Logout';
+import NoticeListPage from './components/NoticeListPage';
+import NoticePage from './components/NoticePage';
+
 
 
 
@@ -34,6 +38,9 @@ const router = createBrowserRouter([
     children: [
       // 메인페이지에 뜰것
       { index: true, element: <HomePage /> },
+      { path: 'notice', element: <NoticeListPage />,},
+      { path: 'notice/:noticeId', element: <NoticePage />,},
+
       {
         path: 'actorProfile',
         element: <ProfileList />,
@@ -50,6 +57,12 @@ const router = createBrowserRouter([
         element: <AuthenticationPage />,
         // action: authAction
       },
+      {
+        path: 'logout',
+        element: <Logout/>,
+        // action: authAction
+      },
+
       {
         path: 'login',
         element: <LoginPage />,

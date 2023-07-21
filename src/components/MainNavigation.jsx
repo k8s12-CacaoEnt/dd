@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom';
+
 import Typography from '@mui/material/Typography';
 import styled from '@emotion/styled';
 import LogoSRC from '../assets/profilehub_logo.png';
+import { useDispatch, useSelector } from 'react-redux';
 
 const LogoBox = styled.div`
 @media (max-width: 650px){
@@ -66,33 +68,46 @@ order: 1
 `;
 
 function MainNavigation() {
+  //로그아웃, 로그인 테스트용
+  const isLogin = useSelector(state => state.isLogin);
+
+  
+  
   return (
    <Header>
     <LogoBox>
     <Logo src={LogoSRC} />
     </LogoBox>
       <MenuItemBox>
-      <MenuItem>
+      <MenuItem>  
         <Typography sx={{fontWeight: 'bold'}}> <NavLink to="/actorProfile">배우 프로필</NavLink> </Typography>
       </MenuItem>
       <MenuItem> 
-      <Typography sx={{fontWeight: 'bold'}}> 캐스팅 공고 </Typography>
-      </MenuItem>
-      <MenuItem>
-      <Typography sx={{fontWeight: 'bold'}}> 공지사항 </Typography>
+        <Typography sx={{fontWeight: 'bold'}}>           
+          <NavLink to="/notice">캐스팅 공고 </NavLink>
+        </Typography>
       </MenuItem>
       </MenuItemBox>
 
       <LoginItemBox>
       <MenuItem>
-        <Typography sx={{fontWeight: 'bold'}}> 
-          <NavLink to="/auth">로그인</NavLink>
-         </Typography>
+      <Typography sx={{fontWeight: 'bold'}}> 
+      {
+        isLogin ? <NavLink to="/logout">로그아웃</NavLink>
+        : <NavLink to="/auth">로그인</NavLink>
+      }
+        
+          
+       </Typography>
       </MenuItem>
       <MenuItem>
-        <Typography sx={{fontWeight: 'bold'}}> 
-          <NavLink to="/signup">회원가입</NavLink>
-         </Typography>
+      <Typography sx={{fontWeight: 'bold'}}> 
+      {
+        isLogin ? <NavLink to="/auth">마이페이지</NavLink>
+        : <NavLink to="/signup">회원가입</NavLink>
+      }
+
+      </Typography>
       </MenuItem>
 
       </LoginItemBox>

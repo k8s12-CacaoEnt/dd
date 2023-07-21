@@ -1,4 +1,4 @@
-const profileList = [{
+const dummyNoticeList = [{
     "status": "SUCCESS",
     "message": "프로필 리스트 조회 성공했습니다.",
     "data": [
