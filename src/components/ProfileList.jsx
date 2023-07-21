@@ -105,7 +105,8 @@ function ProfileList(props){
        {
         return <article key={idx}>
                     <span>{profile.profileId}</span>
-              <ProfilePreview  
+              <ProfilePreview 
+                    profileId={profile.profileId}
                      filePath={profile.images[0].filePath}
                      memberName={profile.memberInfo.memberName}
               />
