@@ -19,8 +19,10 @@ function AuthenticationPage() {
             'admin': 'https://devadmin.profilehub.info'
         },
         'prod': {
-            'user': 'https://user.profilehub.info',
-            'admin': 'https://admin.profilehub.info'
+            // 'user': 'https://user.profilehub.info',
+            // 'admin': 'https://admin.profilehub.info'
+            'user': 'http://profile-box-api-user.api-user.svc.cluster.local:8080',
+            'admin': 'http://profile-box-api-admin.api-admin.svc.cluster.local:8080'
         }
     }
 
@@ -170,17 +172,17 @@ function AuthenticationPage() {
                 </div>
             </form>
 
-            {/*<div className={classes.form}>*/}
-            {/*    <label style={{display: "block"}}>Required Cookie</label>*/}
-            {/*    <button onClick={handleGetNotice}>Get Notice</button>*/}
-            {/*    <button onClick={handleGetProfile}>Get Profile</button>*/}
-            {/*</div>*/}
+            <div className={classes.form}>
+                <label style={{display: "block"}}>Required Cookie</label>
+                <button onClick={handleGetNotice}>Get Notice</button>
+                <button onClick={handleGetProfile}>Get Profile</button>
+            </div>
 
-            {/*<div className={classes.form}>*/}
-            {/*    <label style={{display: "block"}}>Non Required Cookie</label>*/}
-            {/*    <button onClick={handleGetNoticeList}>Get NoticeList</button>*/}
-            {/*    <button onClick={handleGetProfileList}>Get ProfileList</button>*/}
-            {/*</div>*/}
+            <div className={classes.form}>
+                <label style={{display: "block"}}>Non Required Cookie</label>
+                <button onClick={handleGetNoticeList}>Get NoticeList</button>
+                <button onClick={handleGetProfileList}>Get ProfileList</button>
+            </div>
 
         </>
     );
