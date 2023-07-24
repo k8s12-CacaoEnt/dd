@@ -170,17 +170,17 @@ function AuthenticationPage() {
                 </div>
             </form>
 
-            <div className={classes.form}>
-                <label style={{display: "block"}}>Required Cookie</label>
-                <button onClick={handleGetNotice}>Get Notice</button>
-                <button onClick={handleGetProfile}>Get Profile</button>
-            </div>
+            {/*<div className={classes.form}>*/}
+            {/*    <label style={{display: "block"}}>Required Cookie</label>*/}
+            {/*    <button onClick={handleGetNotice}>Get Notice</button>*/}
+            {/*    <button onClick={handleGetProfile}>Get Profile</button>*/}
+            {/*</div>*/}
 
-            <div className={classes.form}>
-                <label style={{display: "block"}}>Non Required Cookie</label>
-                <button onClick={handleGetNoticeList}>Get NoticeList</button>
-                <button onClick={handleGetProfileList}>Get ProfileList</button>
-            </div>
+            {/*<div className={classes.form}>*/}
+            {/*    <label style={{display: "block"}}>Non Required Cookie</label>*/}
+            {/*    <button onClick={handleGetNoticeList}>Get NoticeList</button>*/}
+            {/*    <button onClick={handleGetProfileList}>Get ProfileList</button>*/}
+            {/*</div>*/}
 
         </>
     );
