@@ -19,11 +19,13 @@ function AuthenticationPage() {
             'admin': 'https://devadmin.profilehub.info'
         },
         'prod': {
-            // 'user': 'https://user.profilehub.info',
-            // 'admin': 'https://admin.profilehub.info'
             'user': 'https://profile-box-api-user.api-user.svc.cluster.local:8080',
             'admin': 'https://profile-box-api-admin.api-admin.svc.cluster.local:8080'
         }
+
+        // 'user': 'https://user.profilehub.info',
+        // 'admin': 'https://admin.profilehub.info'
+
     }
 
     const url = {
