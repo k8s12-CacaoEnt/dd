@@ -25,6 +25,7 @@ import Logout from './components/Logout';
 import NoticeListPage from './components/NoticeListPage';
 import NoticePage from './components/NoticePage';
 import FilmList from './components/FilmsList';
+import FilmDetail from './components/FilmDetail';
 
 
 
@@ -50,6 +51,12 @@ const router = createBrowserRouter([
       {
         path: 'films',
         element: <FilmList />,
+        // action: actionProfileList,
+      },
+
+      {
+        path: 'films/:filmId',
+        element: <FilmDetail />,
         // action: actionProfileList,
       },
 
