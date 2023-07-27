@@ -9,8 +9,9 @@ env:
   AWS_ECR_REPOSITORY: profile-box-front
   IMG_TAG: ${{ github.sha }}
   EKS_CLUSTER_NAME: education-eks-B7gsMBzN
-  GITOPS_DIR: gitops/frontend/prod
+  GITOPS_DIR: gitops/frontend/dev
   GITOPS_YAML_FILE: deployment.yaml 
+  GITOPS_REPOSITORY: profile-box-gitops
   
 jobs:
   build:
@@ -46,6 +47,5 @@ jobs:
           git config user.name ${{ secrets.USER_NAME }}
           git config user.email ${{ secrets.USER_EMAIL }}
           git add ${{ env.GITOPS_DIR }}/${{ env.GITOPS_YAML_FILE }}
-          git commit -m "[ci-cd-frontend] Update YAML Image Tag To ${{ env.IMG_TAG }}"
-          # 일단 dev에다가 올린다!
-          git push origin dev
+          git commit -m "[ci-cd-frontend] Update YAML Image Tag To ${{ env.IMG_TAG }}"          
+          git push origin main
