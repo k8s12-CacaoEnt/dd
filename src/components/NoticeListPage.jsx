@@ -108,8 +108,18 @@ const NoticeListPage = () => {
 };
 
 const NoticeDiv = styled.div`
-    width: 100%;
-    background-color: white;
+    // width: 100%;
+    // background-color: white;
+
+    border-radius: 12px;
+box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+max-width: 60rem;
+margin: auto;
+padding: 2rem;
+    
 `;
 
 const NoticeToolbar = styled.div`

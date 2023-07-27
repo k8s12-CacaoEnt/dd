@@ -91,19 +91,19 @@ const ProfilePage = () => {
     useEffect(()=>{
         const profileId = param.profileId;
         // 토큰이 있는지 확인한다
-        if(token){
-            const memberInfo = getMemberInfoToSessionStorage();
-            isLoginDispatch({type: 'isLogin', token: token, data: memberInfo});
-            axios.get(`https://user.profilehub.info/v1/profile/${profileId}`, {
-                headers:{Authorization: `Bearer ${token}`}}
-            ).then((resp)=>{setProfile(resp.data.data)})
+        // if(token){
+        //     const memberInfo = getMemberInfoToSessionStorage();
+        //     isLoginDispatch({type: 'isLogin', token: token, data: memberInfo});
+        //     axios.get(`https://user.profilehub.info/v1/profile/${profileId}`, {
+        //         headers:{Authorization: `Bearer ${token}`}}
+        //     ).then((resp)=>{setProfile(resp.data.data)})
     
     
-        }else{
-            //토큰이 없으면 이동
-            console.log("토큰이 없음")
-            navigate('/')
-        }
+        // }else{
+        //     //토큰이 없으면 이동
+        //     console.log("토큰이 없음")
+        //     navigate('/')
+        // }
 
         // 토큰이 있으면 상세 페이지로 보낸다        
 
