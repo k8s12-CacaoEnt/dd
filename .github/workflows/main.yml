@@ -9,8 +9,8 @@ env:
   AWS_ECR_REPOSITORY: profile-box-front
   IMG_TAG: ${{ github.sha }}
   EKS_CLUSTER_NAME: education-eks-B7gsMBzN
-  DEPLOYMENT_NAME: dev-front
-  CONTAINER_NAME: demo-frontend
+  GITOPS_DIR: gitops/frontend/prod
+  GITOPS_YAML_FILE: deployment.yaml 
   
 jobs:
   build:
@@ -38,7 +38,14 @@ jobs:
         docker build --no-cache -t ${{ env.AWS_ECR_REGISTRY }}/${{ env.AWS_ECR_REPOSITORY }}:${{env.IMG_TAG}} .
         docker push ${{ env.AWS_ECR_REGISTRY }}/${{ env.AWS_ECR_REPOSITORY }}:${{env.IMG_TAG}}
 
-    - name: Deploy to ECR 
+    - name: Update GitOps YAML Version and Commit
       run: |
-        aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.EKS_CLUSTER_NAME }}
-        kubectl set image deployment/${{ env.DEPLOYMENT_NAME }} ${{ env.CONTAINER_NAME }}=${{ env.AWS_ECR_REGISTRY }}/${{ env.AWS_ECR_REPOSITORY }}:${{ github.sha }}
+          cd ${{ env.GITOPS_REPOSITORY }}/${{ env.GITOPS_DIR }}
+          sed -i 's/${{ env.AWS_ECR_REPOSITORY }}:.*/${{ env.AWS_ECR_REPOSITORY }}:${{ env.IMG_TAG }}/' ${{env.GITOPS_YAML_FILE}}
+          cd ../../../
+          git config user.name ${{ secrets.USER_NAME }}
+          git config user.email ${{ secrets.USER_EMAIL }}
+          git add ${{ env.GITOPS_DIR }}/${{ env.GITOPS_YAML_FILE }}
+          git commit -m "[ci-cd-frontend] Update YAML Image Tag To ${{ env.IMG_TAG }}"
+          # 일단 dev에다가 올린다!
+          git push origin dev
