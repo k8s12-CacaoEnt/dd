@@ -101,8 +101,20 @@ width: 100%;
 align-items: center;
 `;
 
+const SearchWrapper = styled.div`
+display:flex;
+flex
+`;
+const SearchField = styled.input``;
+const SearchButton = styled.button`
+`
+
 const FilmList = () => {
     return (<Wrapper>
+            <SearchWrapper>
+                <SearchField type="text" placeholder="김치"/>
+                <SearchButton defaultValue={"검색"}/>
+            </SearchWrapper>
 
         <MoviesWrapper>
         
