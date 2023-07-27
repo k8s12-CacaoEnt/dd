@@ -85,7 +85,7 @@ function MainNavigation() {
   return (
    <Header>
     <LogoBox>
-    <Logo src={LogoSRC} />
+    <NavLink to={"/"}> <Logo src={LogoSRC} /></NavLink>
     </LogoBox>
       <MenuItemBox>
       <MenuItem>  
