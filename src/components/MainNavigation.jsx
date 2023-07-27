@@ -10,6 +10,7 @@ const LogoBox = styled.div`
   // 가로가 650px;아래면
     width: 100px;
     height: 56px;
+    
 }
 width: 100px;
 display: flex;
@@ -17,8 +18,16 @@ display: flex;
 
 const Logo = styled.img`
 box-sizing: border-box;
+@media (max-width: 650px){
+  // 가로가 650px;아래면
+    width: 100px;
+    height: 56px;
+    padding-left:0;
+    
+}
 width: 100%;
 height: 100%;`;
+
 
 const Header = styled.div`
 
@@ -82,12 +91,20 @@ function MainNavigation() {
       <MenuItem>  
         <Typography sx={{fontWeight: 'bold'}}> <NavLink to="/actorProfile">배우 프로필</NavLink> </Typography>
       </MenuItem>
+
       <MenuItem> 
         <Typography sx={{fontWeight: 'bold'}}>           
           <NavLink to="/notice">캐스팅 공고 </NavLink>
         </Typography>
       </MenuItem>
+
+      <MenuItem> 
+        <Typography sx={{fontWeight: 'bold'}}>           
+          <NavLink to="/films">작품 검색 </NavLink>
+        </Typography>
+      </MenuItem>
       </MenuItemBox>
+
 
       <LoginItemBox>
       <MenuItem>
