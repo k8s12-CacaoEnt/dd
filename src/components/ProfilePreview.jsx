@@ -30,11 +30,11 @@ object-fit: cover;
 height: 238px;
 width: 170px;
 //width: 238px;
+border-radius: 10px;
 `;
 
 const Wrapper = styled.div`
 border-width: 1px;
-border-style: solid;
 border-color: var(--color-gray-border);
 border-radius: 10px;
 border-color: black;
@@ -49,13 +49,17 @@ position: relative;
 `;
 
 const ProfileName = styled.div`
-background-color: black;
+background-color: rgba(76,136,239,255);
 font-size: 16px;
 line-height: 1.25em;
+text-align: center;
+font-weight: 600;
 padding: 7px 10px 8px;
 border-radius: 10px;
 margin-top:0;
 color:white;
+rgba(76,136,239,255)
+
 `;
 
 const ProfileDesc = styled.div`
@@ -104,7 +108,7 @@ function ProfilePreview({memberName, filePath, profileId}){
                 {/* <Typography sx={{fontWeight:'bold'}} >{memberName}</Typography> */}
             </ProfileName>                    
             <ProfileDesc>
-            <button onClick={handleClick}>{profileId}</button>
+            {/* <button onClick={handleClick}>{profileId}</button> */}
                 {/* <ul style={{'list-style-type': 'none'}}>
                     <li>서초구, 서울시</li>
                     <li>ddd년</li>

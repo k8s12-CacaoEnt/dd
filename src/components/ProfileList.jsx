@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
 import Pagination from "./Pagination"
-import { Link } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 
 
@@ -14,10 +14,6 @@ box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 display: flex;
 flex-direction: column;
 flex-wrap: wrap;
-
-//
-
-
 max-width: 60rem;
 margin: auto;
 padding: 2rem;
@@ -29,7 +25,7 @@ display: flex;
 flex-direction: row;
 flex-wrap: wrap;
 gap: 10px;
-justify-content: center;
+justify-content: start;
 width: 100%;
 align-items: center;
 
@@ -71,7 +67,9 @@ function ProfileList(props){
        const perPage = 4; 
        const [page, setPage] = useState(1); // // 현재 선택한 페이지
        const [totalPages, setTotalPages] = useState(1); //all page count
+       const navigator = useNavigate();
        
+
        const handleTest = useCallback(()=>{
         let tempProfileList = []    
         axios.get(`https://user.profilehub.info/v1/open/profiles?offset=${page}&limit=${perPage}&sortKey=profileId`
@@ -100,29 +98,28 @@ function ProfileList(props){
 
     
     <ProfileWrapper>
-       
+    
        {profileList.map((profile, idx) => 
        {
         return <article key={idx}>
-                    <span>{profile.profileId}</span>
+                    {/* <span>{profile.profileId}</span> */}
+            <NavLink to={`/actorProfile/${profile.profileId}`}>
               <ProfilePreview 
                     profileId={profile.profileId}
                      filePath={profile.images[0].filePath}
                      memberName={profile.memberInfo.memberName}
               />
+            </NavLink>
           </article>
               
 }
 
 )}
        </ProfileWrapper>
-       <Pagination 
-              
+       <Pagination               
               setPage={setPage}
-              page={page}
-              
+              page={page}              
               totalPages = {totalPages}
-              
        
        />
 
