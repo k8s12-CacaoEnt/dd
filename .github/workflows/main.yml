@@ -12,7 +12,8 @@ env:
   GITOPS_DIR: gitops/frontend/dev
   GITOPS_YAML_FILE: deployment.yaml 
   GITOPS_REPOSITORY: profile-box-gitops
-  
+  ORGANIZATION_NAME: k8s12-CacaoEnt
+
 jobs:
   build:
     name: Build Image
@@ -22,7 +23,16 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
-    
+
+    - name: Checkout GitOps Code
+      uses: actions/checkout@v3
+      with:
+        repository: ${{ env.ORGANIZATION_NAME }}/${{ env.GITOPS_REPOSITORY }}
+        ref: main
+        path: ${{ env.GITOPS_REPOSITORY }}
+        token: ${{secrets.GIT_TOKEN}}
+
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
