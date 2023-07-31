@@ -35,8 +35,10 @@ cursor: pointer;
 `;
 
 const ProfileName = styled.div`
-background-color: black;
+background-color: rgba(51,51,51,255);
 font-size: 16px;
+font-weight: 500;
+text-align: center;
 line-height: 1.25em;
 padding: 7px 10px 8px;
 border-radius: 10px;

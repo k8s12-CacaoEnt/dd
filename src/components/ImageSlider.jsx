@@ -1,38 +1,22 @@
-import { useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
-const slideStyles = {
-  width: "50px",
-  height: "50px",
-  borderRadius: "10px",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  
-};
 
-const RightArrow = styled.div`
-// position: absolute;
-top: 50%;
-transform: translate(0, -50%);
-right: -100;
-font-size: 55px;
-color: #fff;
-z-index: 1;
-cursor: pointer;
-}
-`;
 
-const LeftArrow = styled.div`
-// position: absolute;
-top: 50%;
-transform: translate(0, -50%);
-left: 32px;
-font-size: 55px;
-position:abolute;
-color: #fff;
-z-index: 1;
-cursor: pointer;
+const Arrow = styled.button`
+border: none;
+border-radius: 8px;
+padding: 8px;
+margin: 0;
+background: black;
+color: white;
+font-size: 1rem;
+
+&[disabled] {
+  background: grey;
+  cursor: revert;
+  transform: revert;
 }
 `;
 
@@ -63,7 +47,6 @@ const DotsContainerStyles = styled.div`
 
 
 const Wrapper = styled.div`
-border: 1px solid black;
 display: flex;
 flex-direction: column;
 text-align:center;
@@ -71,64 +54,24 @@ text-align:center;
   // 가로가 650px;아래면
   width:640;
   height:360;
-  
-
 }  
-
 `;
 
-const ImageSlider = ({ slides }) => {
+const ImageSlider = ({ slides, page, setPage, totalPages }) => {
   const nav= useNavigate()
-  const [currentIndex, setCurrentIndex] = useState(3);
-  const [step, setStep] = useState(3);
-  const [start, setStart] = useState(0);
-  const goToPrevious = () => {
-    const newIndex = currentIndex - 3;
-    const newStart = start - 3;
-
-    if(newStart < 0 ){
-      setCurrentIndex(3);      
-      setStart(0) 
-    }else{
-      setStart(newStart)
-      setCurrentIndex(newIndex);
-    }
-    console.log(newStart, newIndex)
-  };
-
-  const goToNext = () => {
-    const newIndex = currentIndex + 3;
-    const newStart = start + 3;
-
-    if(slides.length - newIndex < 0){
-      setCurrentIndex(slides.length-1);      
-      setStart(slides.length-4)
-    }else{
-      setStart(newStart)
-      setCurrentIndex(newIndex);
-    }
-    
-    console.log(newStart,newIndex)
-  };
-  const goToSlide = (slideIndex) => {
-    setCurrentIndex(slideIndex);
-  };
-  const slideStylesWidthBackground = {
-        ...slideStyles,
-    position: "relative",
-    height: "100%",
-  
-};
-
-
 
 
   return (
     <Wrapper>
       
       <DotsContainerStyles >
-      <LeftArrow onClick={goToPrevious} >❰</LeftArrow>
-        {slides.slice(start,currentIndex).map((slide, slideIndex) => (
+
+      <Arrow onClick={() => setPage(page - 1)} disabled={page === 1}>
+            &lt;
+          </Arrow>
+                  
+      
+        {slides.slice(page,page+3).map((slide, slideIndex) => (
           <CastingWrapper>
           
           <CastingImg src={slide.url}      
@@ -140,7 +83,10 @@ const ImageSlider = ({ slides }) => {
           
           </CastingWrapper>
         ))}
-        <RightArrow onClick={goToNext} >❱</RightArrow>
+          <Arrow onClick={() => setPage(page + 1)} disabled={page === totalPages-3}>
+            &gt;
+          </Arrow>        
+        
       </DotsContainerStyles>
     </Wrapper>
   );

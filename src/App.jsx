@@ -20,7 +20,7 @@ import { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { getTokenToSessionStorage, getMemberInfoToSessionStorage } from './comm/common.js';
 import ProfileList from './components/ProfileList';
-import ProfilePage from './components/ProfileDetail';
+import ProfilePage from './components/ProfilePage';
 import Logout from './components/Logout';
 import NoticeListPage from './components/NoticeListPage';
 import NoticePage from './components/NoticePage';

@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { styled } from "styled-components";
 import YouTube from 'react-youtube';
-import { Modal } from "@mui/material";
+import { Chip, Modal } from "@mui/material";
 import ImageSlider from "./ImageSlider";
+import { useEffect, useState } from "react";
 
 
 const Wrapper = styled.div`
@@ -20,20 +21,15 @@ background: linear-gradient(to right bottom, rgba(115, 186, 210, 0.8), rgba(231,
 const SliderWrapper = styled.div`
 width: "500px",
 height: "280px",
-margin: "0 auto",
+margin: "auto"
+
 
 `;
 
-const opts = {
-    height: '390',
-    width: '640',
-    playerVars: {
-      autoplay: 1,
-    },
-  };
+
 
 const CastsListWarapper = styled.div`
-border: 1px solid black;
+// border: 1px solid black;
 display: flex;
 flex-direction: column;
 text-align:center;
@@ -72,55 +68,50 @@ const CastName = styled.div`
 const Header = styled.div`
 display: flex;
 flex-direction: row;
-width: "500px",
-height: "280px",
-margin: "0 auto",
-
-justify-content: center;
+justify-content: flex-start;
 
   
 @media (max-width: 650px){
     // 가로가 650px;아래면
       flex-direction: column;
   }  
+margin: 30px auto;
 `;
 
 
 
 const HeaderImg = styled.img`
-width:50%;
+width:20rem;
 height:100%;
 @media (max-width: 650px){
     // 가로가 650px;아래면
       flex-direction: column;
   }  
-
-`;
-const Video = styled.iframe`
-width:640;
-height:360;
-flex-grow:1
-@media (max-width: 650px){
-    // 가로가 650px;아래면
-    width:640;
-    height:360;
-    
-    
-  }  
+border-radius:50px;
 
 
 `;
+
 const MovieDescWrapper = styled.div`
 `;
 
-const MovieTitle = styled.div`
+const MovieTitle = styled.h1`
+
 `;
 
-const HashTagList = styled.div``;
-const HashTag = styled.div``;
+const HashTagList = styled.div`
+font-weight:800;
+`;
 
 const MovieDescription = styled.div``
 ;
+
+const TextWrapper = styled.div`
+padding: 5px;
+display: flex;
+flex-direction: column;
+
+`;
 function FilmDetail (props){
     const param = useParams()
     const filmId = param.filmId;
@@ -135,22 +126,32 @@ function FilmDetail (props){
       
     ];
 
+    const [page, setPage] = useState(1)
+    const totalPages = slides.length;
+
     return(<Wrapper>
             
              <Header>
                 <HeaderImg src='https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230709/8d2ef2cd-6dcd-447c-a711-af29c6227fa7.png'/>
                 {/* <Video id="ytplayer" type="text/html" src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com" />*/}
                               <MovieDescWrapper>
-                <HashTagList>
-                    <HashTag>드라마</HashTag>
-                    <HashTag>장르</HashTag>
-                </HashTagList>
-                <h1><MovieTitle>영화제목(개봉연도) 필름 ! {filmId} </MovieTitle></h1>
-                <MovieDescription>영화 내용~~</MovieDescription>
+                <TextWrapper>
+                    <HashTagList>
+                        <Chip label="#DRAMA"/>
+                        <Chip label="#ACTION"/>
+                    </HashTagList>
+                  <MovieTitle>영화제목(개봉연도) 필름 ! {filmId} </MovieTitle>
+                  <MovieDescription>
+                  엠바고가 풀린 뒤 로튼 토마토 평가는 90%를 받으며 신선 마크를 획득했고, 메타스코어는 80/100을 기록했고, 레터박스는 4.2점을 기록하며 그레타 거윅 감독의 전작들에 이어 상당한 호평을 받고 있다. 관객 점수도 로튼 토마토 90%, IMDB 7.7점, 시네마스코어 등급 A로 시작하며 높은 점수를 기록했다.
+
+국내 평점은 CGV 골든 에그가 87%, 롯데시네마와 메가박스 평점이 8점 중반대에 형성되었다. 특이한 점은 보통 골든 에그 지수는 좋아요/별로예요로만 지표를 산출하는 만큼 타사 평점제와 비교하면 점수가 높게 찍히는데, 이 영화는 골든 에그와 타사 평점이 거의 동일한 수준에 머무르고 있다. 이는 영화에 대한 호불호가 크게 갈려 호평하는 쪽은 10점을, 혹평하는 쪽은 1점을 주는 비중이 비교적 높다는 자료로 볼 수 있다.
+
+                  </MovieDescription>
+                </TextWrapper>
              </MovieDescWrapper>
 
              </Header>
-             <SliderWrapper>        <ImageSlider slides={slides} /></SliderWrapper>
+             <SliderWrapper>        <ImageSlider slides={slides} page={page} setPage={setPage} totalPages={totalPages}/></SliderWrapper>
 
     </Wrapper>)
 
