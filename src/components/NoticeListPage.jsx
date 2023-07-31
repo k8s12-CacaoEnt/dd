@@ -4,7 +4,13 @@ import { Link, useParams } from "react-router-dom";
 import Pagination from './Pagination';
 import axios from 'axios';
 import dummyNoticeList from '../api/notice';
-
+import Chip from '@mui/material/Chip';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import ScheduleSendIcon from '@mui/icons-material/ScheduleSend';
+import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
+import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
+import TocIcon from '@mui/icons-material/Toc';
+import AbcIcon from '@mui/icons-material/Abc';
 
 const NoticeRow = ({ notice }) => {
 
@@ -25,9 +31,9 @@ const NoticeRow = ({ notice }) => {
             <TableCell>
             <Link to={`/notice/${notice.noticeId}`}>{notice.title}</Link>
             </TableCell>
-            <TableCell>{notice.filmo_type}</TableCell>
+            <TableCell> <Chip label={notice.filmo_type}/></TableCell>
             <TableCell>{notice.filmo_name}</TableCell>
-            <TableCell>{notice.filmo_role}</TableCell>
+            <TableCell><Chip label={notice.filmo_role}/></TableCell>
             <TableCell>
                 {notice.apply_deadline_dt}
             </TableCell>
@@ -75,18 +81,18 @@ const NoticeListPage = () => {
         {
             <NoticeDiv>
                 <NoticeToolbar>
-                Notice Board
+                캐스팅 공고
             </NoticeToolbar>
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Title</TableCell>
-                            <TableCell>Type</TableCell>
-                            <TableCell>Name</TableCell>
-                            <TableCell>Role</TableCell>
-                            <TableCell>Deadline</TableCell>
-                            <TableCell>Start Period</TableCell>
-                            <TableCell>End Period</TableCell>
+                            <TableCell><TocIcon/>제목</TableCell>
+                            <TableCell><AbcIcon/>작품 타입</TableCell>
+                            <TableCell><LocalMoviesIcon/>작품명</TableCell>
+                            <TableCell><TheaterComedyIcon/> 구인 역할</TableCell>
+                            <TableCell><ScheduleSendIcon color='primary'/>마감일</TableCell>
+                            <TableCell><CalendarMonthIcon/>촬영 시작일</TableCell>
+                            <TableCell><CalendarMonthIcon/>촬영 종료일</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -136,6 +142,7 @@ const Table = styled.table`
 
 const TableHead = styled.thead`
     color: #222222;
+    font-weight:900;
 `;
 
 const TableBody = styled.tbody`
@@ -148,6 +155,9 @@ const TableRow = styled.tr`
 const TableCell = styled.td`
     padding: 10px;
     border: 1px solid #888888;
+    text-align: center;
+    color:rgba(51,51,51,255);
+    
 `;
 
 export default NoticeListPage;

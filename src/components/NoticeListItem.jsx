@@ -71,7 +71,7 @@ function NoticeListItem(){
             noticeList.splice(0,5).map((notice, idx)=>{
                 return <NoticeContents key={idx}>
                     <NoticeLeft>
-                        <Button size="small" variant="contained">{notice.filmo_role}</Button>
+                        {/* <Button size="small" variant="contained">{notice.filmo_role}</Button> */}
                         {notice.notice_title}
                     </NoticeLeft>
                         

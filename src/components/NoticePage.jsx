@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import styled from "styled-components";
+import Chip from '@mui/material/Chip';
+
 
 
 const dummyNotice = {
@@ -92,8 +94,8 @@ const NoticeItem = ({ notice, isEditing, onChange, onSubmit }) => {
                 </NoticeTitleDiv>
                 <NoticeContentDiv>
                     <p>
-                        작품 분류 : 
-                        {notice.filmo_type}
+                        작품 분류 :                         
+                        <Chip label={notice.filmo_type}/>
                         </p>
                     <p>
                         작품명 : 
@@ -101,7 +103,7 @@ const NoticeItem = ({ notice, isEditing, onChange, onSubmit }) => {
                         </p>
                     <p>
                         역할명 : 
-                        {notice.filmo_role}
+                        <Chip label={notice.filmo_role}/>
                         </p>
                     <p>
                         지원 마감 일자 :
@@ -196,14 +198,8 @@ function NoticePage() {
 
     return (
         <>
-            <Link to="/noticeListPage">목록으로 돌아가기</Link>
             <NoticeItem notice={notice} isEditing={isEditing} onChange={handleChange} onSubmit={handleSubmit} />
-            {!isEditing && (
-                <>
-                    <button onClick={() => setIsEditing(true)}>글 수정</button>
-                    <button onClick={handleDelete}>글 삭제</button>
-                </>
-            )}
+            {!isEditing}
         </>
     );
 }
@@ -211,22 +207,30 @@ function NoticePage() {
 const NoticeDiv = styled.div`
     width: 100%;
     background-color: white;
+margin: auto;
 
 `;
-const NoticeTitleDiv = styled.div`
+const NoticeTitleDiv = styled.h1`
     box-sizing: border-box;
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+
     width: 100%;
-    font-weight : bold;
+    font-weight:900;
     text-align: center;
     padding: 20px;
-    background-color: white;
-    color: #222222;
+    color:rgba(51,51,51,255);
     border: 1px solid #888888;
+    border-rai
+
 `;
 const NoticeContentDiv = styled.div`
     box-sizing: border-box;
     width: 100%; // 100% vs 100vw 
     flex-direction: column;
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+
     text-align: left;
     padding: 20px;
     color: #444444;
