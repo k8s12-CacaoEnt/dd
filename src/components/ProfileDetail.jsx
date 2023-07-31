@@ -90,6 +90,7 @@ const ProfilePage = () => {
 
     useEffect(()=>{
         const profileId = param.profileId;
+        console.log("토근 구현 로직 주석처리")
         // 토큰이 있는지 확인한다
         // if(token){
         //     const memberInfo = getMemberInfoToSessionStorage();
