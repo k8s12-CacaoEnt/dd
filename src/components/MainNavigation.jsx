@@ -106,7 +106,7 @@ function MainNavigation() {
       </MenuItemBox>
 
 
-      <LoginItemBox>
+      {/* <LoginItemBox>
       <MenuItem>
       <Typography sx={{fontWeight: 'bold'}}> 
       {
@@ -127,7 +127,7 @@ function MainNavigation() {
       </Typography>
       </MenuItem>
 
-      </LoginItemBox>
+      </LoginItemBox> */}
 
 
    </Header>
