@@ -1,10 +1,5 @@
 import { styled } from "styled-components";
 import Card from "../components/Card";
-import MainFeature from "../components/MainFeature";
-import StarIcon from '@mui/icons-material/Star';
-import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
-import VerifiedIcon from '@mui/icons-material/Verified';
-import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 
 const FeatureWrapper = styled.div`
 border-radius: 12px;
