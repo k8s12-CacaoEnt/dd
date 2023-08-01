@@ -1,4 +1,4 @@
-name: Deploy to ECR
+name: CI/CD
 
 on: 
   push:
@@ -16,15 +16,13 @@ env:
 
 jobs:
   build:
-    name: Build Image
     runs-on: ubuntu-latest
 
-   
-    steps:
+    steps: 
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: Checkout GitOps Code
+    - name: GitOps레포지토리 체크아웃
       uses: actions/checkout@v3
       with:
         repository: ${{ env.ORGANIZATION_NAME }}/${{ env.GITOPS_REPOSITORY }}
@@ -32,24 +30,23 @@ jobs:
         path: ${{ env.GITOPS_REPOSITORY }}
         token: ${{secrets.GIT_TOKEN}}
 
-
-    - name: Configure AWS credentials
+    - name: AWS credentials 설정
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
-    - name: Login to Amazon ECR
+    - name: ECR 로그인
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Build, tag, and push image to Amazon ECR
+    - name: 이미지 빌드 후 ECR 저장
       run: |
         docker build --no-cache -t ${{ env.AWS_ECR_REGISTRY }}/${{ env.AWS_ECR_REPOSITORY }}:${{env.IMG_TAG}} .
         docker push ${{ env.AWS_ECR_REGISTRY }}/${{ env.AWS_ECR_REPOSITORY }}:${{env.IMG_TAG}}
 
-    - name: Update GitOps YAML Version and Commit
+    - name: GitOps리포지토리 YAML 수정후 and Commit
       run: |
           cd ${{ env.GITOPS_REPOSITORY }}/${{ env.GITOPS_DIR }}
           sed -i 's/${{ env.AWS_ECR_REPOSITORY }}:.*/${{ env.AWS_ECR_REPOSITORY }}:${{ env.IMG_TAG }}/' ${{env.GITOPS_YAML_FILE}}

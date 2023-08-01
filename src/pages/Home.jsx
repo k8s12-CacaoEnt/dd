@@ -70,25 +70,25 @@ function HomePage() {
          <ProductWrapper>
            <Product>
             <ProductImage src="https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/assets/r.png"></ProductImage>
-            <ProductTitle>For Influencers + Content Creators</ProductTitle>
-            <ProductDesc>Find new clients</ProductDesc>
+            <ProductTitle>배우 데뷔를 위해!</ProductTitle>
+            <ProductDesc>지금 당장 캐스팅 공고를 확인해보세요</ProductDesc>
 
              </Product>
            <Product>
             <ProductImage src="https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/assets/y.png"></ProductImage>
-            <ProductTitle>For Influencers + Content Creators</ProductTitle>
-            <ProductDesc>Find new clients</ProductDesc>
+            <ProductTitle>배우들의 커리어를 확인하고 싶나요?</ProductTitle>
+            <ProductDesc>작품 검색을 통해 레퍼런스 체크를!</ProductDesc>
            </Product>
            <Product>
             <ProductImage src="https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/assets/g.png"></ProductImage>
-            <ProductTitle>For Influencers + Content Creators</ProductTitle>
-            <ProductDesc>Find new clients</ProductDesc>
+            <ProductTitle>새로운 기회는</ProductTitle>
+            <ProductDesc> 프로필 허브에서..!</ProductDesc>
 
            </Product>
            <Product>
             <ProductImage src="https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/assets/b.png"></ProductImage>
-            <ProductTitle>For Influencers + Content Creators</ProductTitle>
-            <ProductDesc>Find new clients</ProductDesc>
+            <ProductTitle>새로운 배우를 찾나요?</ProductTitle>
+            <ProductDesc>프로필 허브에는 신선한 배우들의 프로필들이 가득합니다!</ProductDesc>
 
            </Product>
 

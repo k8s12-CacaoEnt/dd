@@ -66,11 +66,10 @@ const ImageSlider = ({ slides, page, setPage, totalPages }) => {
       
       <DotsContainerStyles >
 
-      <Arrow onClick={() => setPage(page - 1)} disabled={page === 1}>
+      <Arrow onClick={() => setPage(page - 1)} disabled={page === 0}>
             &lt;
           </Arrow>
-                  
-      
+                        
         {slides.slice(page,page+3).map((slide, slideIndex) => (
           <CastingWrapper>
           
