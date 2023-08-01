@@ -64,7 +64,7 @@ const PageButton = styled.button`
 function ProfileList(props){
        const [profileList, setProfileList] = useState([]);
        // 페이지 네이션 수 
-       const perPage = 4; 
+       const perPage = 10; 
        const [page, setPage] = useState(1); // // 현재 선택한 페이지
        const [totalPages, setTotalPages] = useState(1); //all page count
        const navigator = useNavigate();
