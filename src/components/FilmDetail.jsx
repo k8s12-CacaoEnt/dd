@@ -116,23 +116,18 @@ function FilmDetail (props){
     const param = useParams()
     const filmId = param.filmId;
     const slides = [
-      {url: "https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230709/8d2ef2cd-6dcd-447c-a711-af29c6227fa7.png", title: "패럴 윌리엄스", id:1 },
-      { url: "https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230709/8d2ef2cd-6dcd-447c-a711-af29c6227fa7.png", title: "케이티 페리", id: 2},
-      { url: "https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230709/8d2ef2cd-6dcd-447c-a711-af29c6227fa7.png", title: "마고 로비", id: 7 },
-      {url:"https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230714/2f08e239-9056-4b54-87ed-4c951a6c5f16.jpeg",title: "조나단 킹슬러", id: 8 },
-      { url: "https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230709/8d2ef2cd-6dcd-447c-a711-af29c6227fa7.png", title: "키스 도슨", id: 11 },
-      { url: "https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230709/8d2ef2cd-6dcd-447c-a711-af29c6227fa7.png", title: "타이 커스타인", id:3 },
-      { url: "https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230709/8d2ef2cd-6dcd-447c-a711-af29c6227fa7.png", title: "마이클 아이작",id:6},
-      
+      { url: "https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230714/c96ee894-309c-4c83-b485-33b431612304.jpeg", title: "혜원(동수 역)", id: 17},
+      { url: "https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230707/%E1%84%87%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%AE%E1%86%AB%E1%84%92%E1%85%A9.png", title: "제일(종석 역)", id: 19 },
+      {url: "https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230714/7b805564-d0fd-4457-bc73-0538c5127f98.png", title: "종형(수민 역)", id:18 },
     ];
 
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(0)
     const totalPages = slides.length;
 
     return(<Wrapper>
             
              <Header>
-                <HeaderImg src='https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230709/8d2ef2cd-6dcd-447c-a711-af29c6227fa7.png'/>
+                <HeaderImg src='https://profilehub-bucket.s3.ap-northeast-2.amazonaws.com/storage/files/images/20230707/d.png'/>
                 {/* <Video id="ytplayer" type="text/html" src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com" />*/}
                               <MovieDescWrapper>
                 <TextWrapper>
@@ -140,12 +135,20 @@ function FilmDetail (props){
                         <Chip label="#DRAMA"/>
                         <Chip label="#ACTION"/>
                     </HashTagList>
-                  <MovieTitle>영화제목(개봉연도) 필름 ! {filmId} </MovieTitle>
+                  <MovieTitle>레디액션! 폭력영화(2014) </MovieTitle>
                   <MovieDescription>
-                  엠바고가 풀린 뒤 로튼 토마토 평가는 90%를 받으며 신선 마크를 획득했고, 메타스코어는 80/100을 기록했고, 레터박스는 4.2점을 기록하며 그레타 거윅 감독의 전작들에 이어 상당한 호평을 받고 있다. 관객 점수도 로튼 토마토 90%, IMDB 7.7점, 시네마스코어 등급 A로 시작하며 높은 점수를 기록했다.
 
-국내 평점은 CGV 골든 에그가 87%, 롯데시네마와 메가박스 평점이 8점 중반대에 형성되었다. 특이한 점은 보통 골든 에그 지수는 좋아요/별로예요로만 지표를 산출하는 만큼 타사 평점제와 비교하면 점수가 높게 찍히는데, 이 영화는 골든 에그와 타사 평점이 거의 동일한 수준에 머무르고 있다. 이는 영화에 대한 호불호가 크게 갈려 호평하는 쪽은 10점을, 혹평하는 쪽은 1점을 주는 비중이 비교적 높다는 자료로 볼 수 있다.
+                  #1. Extreme 민호가 착하니 천하무적
+“도대체 저한테 왜 그러신 거예요?”
+외딴 시골, 외근 후 서울로 향하던 ‘민호’는 길을 잃고 마을을 헤매다 동네 양아치들과 막장커플에게 돌연 무차별 폭행을 당한다. 그들을 향한 착하디 착한(?) 민호의 반격이 시작되는데…
 
+#2. REAL 메이킹 필름
+“XXX야, 줄 풀어. 줄 풀라고!”
+허름한 방, 밧줄로 온몸이 묶인 남자와 복면을 쓴 정체 모를 남자가 언성을 높이고 있다. 갖은 욕설과 비난이 계속되던 중, 급기야 복면 남자가 억눌러왔던 분노를 참지 못하는데…
+
+#3. BITTER 나의 싸움
+“이기는 자가 강한 것이다”
+한적한 동네 뒷골목, 어린 시절부터 유약했던 고등학생 ‘도경’은 강해지겠다는 일념으로 동네를 주름잡는 불량 일진회에게 겁 없이 대결을 신청하는데… 
                   </MovieDescription>
                 </TextWrapper>
              </MovieDescWrapper>

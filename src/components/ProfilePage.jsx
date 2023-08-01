@@ -48,43 +48,26 @@ const NoticeItem = ({ notice, isEditing, onChange, onSubmit }) => {
                 </NoticeTitleDiv>
                 <NoticeContentDiv>
                     <p>
-                        작품 분류 :                         
-                        <Chip label={notice.filmo_type}/>
+                        주 활동 분야 :                         
+                        <Chip label="ACTOR"/>
                         </p>
-                    <p>
-                        작품명 : 
-                        {notice.filmo_name}
-                        </p>
-                    <p>
-                        역할명 : 
-                        <Chip label={notice.filmo_role}/>
-                        </p>
-                    <p>
-                        지원 마감 일자 :
-                        {formatDateTime(notice.apply_deadline_dt)}
-                    </p>
-                    <p>
-                        촬영 시작(예정)일 :
-                        {formatDateTime(notice.filming_start_period)}
-                    </p>
-                    <p>
-                        촬영 종료(예정)일 :
-                        {formatDateTime(notice.filming_end_period)}
-                    </p>
-                    <p>
-                        작성일 :
-                        {formatDateTime(notice.create_dt)}
-                    </p>
-                    {notice.modifyDt && (
-                        <p>
-                            수정일 :
-                            {formatDateTimeIfExist(notice.modify_dt)}
-                        </p>
-                    )}
-                    <p>
-                        상세 내용 :
-                        {notice.content}
-                    </p>
+                    <div>
+                      {notice.content}
+                      <h3>
+                        필모그래피
+                      </h3>
+                      {notice.filmos && notice.filmos.map((v,idx)=>{
+                        return (
+
+                            <div>
+                                <span>{idx+1}. </span>{v.filmoName}
+                                </div>
+                        )
+                      })}
+    
+                    </div>
+
+
                 </NoticeContentDiv>
             </NoticeDiv>
         );}
@@ -92,14 +75,14 @@ const NoticeItem = ({ notice, isEditing, onChange, onSubmit }) => {
 function ProfilePage() {
 
     
-    const { noticeId } = useParams();
+    const { profileId } = useParams();
     const navigate = useNavigate();
     const [notice, setNotice] = useState(dummyNotice); // null?
     const [isEditing, setIsEditing] = useState(false);
 
 
     const handleTest = ()=>{
-        axios.get(`https://admin.profilehub.info/v1/notice/noticeId/${noticeId}`
+        axios.get(`https://user.profilehub.info/v1/open/profile/${profileId}`
         ).then(resp=>{
             // console.log(resp.data.data);
             setNotice(resp.data.data)
