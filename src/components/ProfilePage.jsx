@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect, useCallback } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate, NavLink } from 'react-router-dom';
 import styled from "styled-components";
 import Chip from '@mui/material/Chip';
 
@@ -41,6 +41,7 @@ const formatDateTimeIfExist = (dateStr) => {
 }
 
 const NoticeItem = ({ notice, isEditing, onChange, onSubmit }) => {
+    const nav = useNavigate();
         return (
             <NoticeDiv>
                 <NoticeTitleDiv>
@@ -60,7 +61,8 @@ const NoticeItem = ({ notice, isEditing, onChange, onSubmit }) => {
                         return (
 
                             <div>
-                                <span>{idx+1}. </span>{v.filmoName}
+                                <span>{idx+1}. </span>
+                                <NavLink to="/films/4444">{v.filmoName}</NavLink>
                                 </div>
                         )
                       })}
